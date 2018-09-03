@@ -54,8 +54,30 @@ public class Main extends Application{
 			TextField field3 = new TextField();
 			
 
-			
+			// back button, reset to last prompts
 			backButton.setOnAction(e -> {
+				if(currentPress == 1) {
+					
+					field1.clear();
+					field2.clear();
+					field3.clear();
+					
+					prompt1.setText("Please input your @spartanrobotics email:");
+					prompt2.setText("Please input your @spartanrobotics password:");
+					prompt3.setText("Please input your name (FirstName LastName)");
+				}
+				else if (currentPress == 2) {
+					field1.clear();
+					field2.clear();
+					field3.clear();
+					
+					prompt1.setText("Please input the recipient's email:");
+					prompt2.setText("Please input the company's name:");
+					prompt3.setText("This company should sponsor us because... (do not start with a capital)");
+					
+					nextButton.setText("Next");
+				}
+				else if(currentPress == 0) currentPress++;
 				
 				currentPress--;
 			});
@@ -65,8 +87,8 @@ public class Main extends Application{
 				VBox startLayoutV = new VBox(20);
 				startLayoutV.getChildren().addAll(prompt1, field1,prompt2,field2,prompt3,field3);
 				// HBox
-				HBox startLayoutH = new HBox(100);
-				startLayoutH.getChildren().addAll(nextButton);
+				HBox startLayoutH = new HBox(250);
+				startLayoutH.getChildren().addAll(backButton,nextButton);
 				// Container
 				BorderPane container = new BorderPane();
 				container.setTop(startLayoutV);
@@ -120,7 +142,6 @@ public class Main extends Application{
 				currentPress++;
 			});
 				
-		// SCENE 2
 				
 			
 		// start scene
@@ -128,11 +149,21 @@ public class Main extends Application{
 		window.setScene(startScene);
 		window.show();
 	}
-	void nextScene() {
+	private void firstPrompt() {
+		
+	}
+	private void secondPrompt() {
+		
+	}
+	private void thirdPrompt() {
+		
+	}
+	// currently unused; will be used in case of expansion
+	private void nextScene() {
 		currentScene++;
 		window.setScene(scenes[currentScene]);
 	}
-	void lastScene() {
+	private void lastScene() {
 		if(currentScene != 0) {
 		currentScene--;
 		window.setScene(scenes[currentScene]);
